@@ -1,0 +1,30 @@
+{% extends 'BASE.html' %}
+
+{% block title %}Login{% endblock %}
+
+
+{% block content %}
+
+    <form action="" method="post">
+        {{ form.csrf_token }}
+
+        {{ form.email.label(class='form-control-label') }} :{{ form.email(class='form-control') }}
+        {% if form.email.errors %}
+            {% for err in form.email.errors %}
+                <p class="alert alert-danger">{{ err }}</p>
+            {% endfor %}
+        {% endif %}
+
+
+        {{ form.password.label(class='form-control-label') }} :{{ form.password(class='form-control') }}
+        {% if form.password.errors %}
+            {% for err in form.password.errors %}
+                <p class="alert alert-danger">{{ err }}</p>
+            {% endfor %}
+        {% endif %}
+            {{ form.remember_me.label}}{{ form.remember_me}}
+
+        <input type="submit" value="Login" class="btn btn-warning btn-block" style="margin-top: 20px; ">
+    </form>
+{% endblock %}
+

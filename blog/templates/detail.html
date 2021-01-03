@@ -1,0 +1,37 @@
+{% extends "BASE.html" %}
+
+
+{% block content %}
+    {% if post.author == current_user %}
+        <a href="{{ url_for('delete', post_id=post.id) }}" class="btn btn-danger">Delete</a>
+        <a href="{{ url_for('update', post_id=post.id) }}" class="btn btn-primary">Update</a>
+    {% endif %}
+
+
+
+    <h2>title : </h2>
+    <h3 >{{ post.title }}</h3>
+    <h4>content :</h4>
+    <h3>{{ post }}</h3>
+    <small>{{ post.author }}</small>
+    <hr>
+    <small>{{ post.date }}</small>
+
+    {% if post.author == current_user %}
+        <form action="" method="post">
+            {{ form.csrf_token }}
+            <br>
+            {{ form.title.label (class='form-control-label') }} :
+            {{ form.title (class='form-control') }}
+            <br>
+            {{ form.content.label (class='form-control-label') }} :
+            {{ form.content (class='form-control') }}
+            <br>
+            <input type="submit" value="Update" class="btn btn-info">
+            <br>
+        </form>
+    {% endif %}
+
+
+
+{% endblock %}

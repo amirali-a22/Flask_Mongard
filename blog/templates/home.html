@@ -1,0 +1,15 @@
+{% extends 'BASE.html' %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+
+    <h1>Home Page {{ current_user.username }}</h1>
+
+
+    {% for post in posts %}
+        <div class="card">
+            <a href="{{ url_for('detail', post_id=post.id) }}">{{ post }}</a>
+        </div>
+    {% endfor %}
+{% endblock %}

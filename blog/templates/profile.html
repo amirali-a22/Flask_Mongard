@@ -1,0 +1,30 @@
+{% extends 'BASE.html' %}
+
+
+{% block content %}
+
+    <h2>{{ current_user.username }}</h2>
+    <h2>{{ current_user.email }}</h2>
+
+    <form action="" method="post">
+    {{ form.csrf_token }}
+
+        {{ form.username.label }} {{ form.username }}
+
+        {% if form.username.errors %}
+            {% for err in form.username.errors %}
+                <p class="alert alert-danger">{{ err }}</p>
+            {% endfor %}
+        {% endif %}
+
+
+        {{ form.email.label }} {{ form.email }}
+
+        {% if form.email.errors %}
+            {% for err in form.email.errors %}
+                <p class="alert alert-danger">{{ err }}</p>
+            {% endfor %}
+        {% endif %}
+        <input type="submit" value="Update">
+    </form>
+{% endblock %}

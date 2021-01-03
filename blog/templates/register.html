@@ -1,0 +1,48 @@
+{% extends 'BASE.html' %}
+
+{% block title %}Register{% endblock %}
+
+
+{% block content %}
+    <form action="" method="post">
+        {{ form.csrf_token }}
+
+
+        {{ form.username.label(class='form-control-label') }} :{{ form.username(class='form-control') }}
+        <br>
+        {% if form.username.errors %}
+            {% for err in form.username.errors %}
+                <p class="alert alert-danger">{{ err }}</p>
+            {% endfor %}
+        {% endif %}
+
+
+        {{ form.email.label(class='form-control-label') }} :{{ form.email(class='form-control') }}
+        <br>
+        {% if form.email.errors %}
+            {% for err in form.email.errors %}
+                <p class="alert alert-danger">{{ err }}</p>
+            {% endfor %}
+        {% endif %}
+
+
+        {{ form.password.label(class='form-control-label') }} :{{ form.password(class='form-control') }}
+        <br>
+        {% if form.password.errors %}
+            {% for err in form.password.errors %}
+                <p class="alert alert-danger">{{ err }}</p>
+            {% endfor %}
+        {% endif %}
+
+
+        {{ form.confirm_password.label(class='form-control-label') }} :{{ form.confirm_password(class='form-control') }}
+        <br>
+        {% if form.confirm_password.errors %}
+            {% for err in form.confirm_password.errors %}
+                <p class="alert alert-danger">{{ err }}</p>
+            {% endfor %}
+        {% endif %}
+        <input type="submit" value="Register" class="btn btn-info btn-block" style="margin-top: 20px; ">
+    </form>
+{% endblock %}
+
